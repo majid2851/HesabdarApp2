@@ -16,6 +16,8 @@ public class ReportActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
+
+
     }
 
 
@@ -23,8 +25,9 @@ public class ReportActivity extends AppCompatActivity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         Log.i("mag2851-afterPayment",intent.getData().toString());
-//        if(intent.getAction() != null && intent.getAction().equals(Intent.ACTION_VIEW)) {
-//            Uri uri = intent.getData();
+        if(intent.getAction() != null && intent.getAction().equals(Intent.ACTION_VIEW)) {
+            Uri uri = intent.getData();
+            Log.i("mag2851-this","alskjdflasj");
 //            try {
 //                String q = uri.getQueryParameter("q");
 //                String s = uri.getQueryParameter("s");
@@ -44,6 +47,7 @@ public class ReportActivity extends AppCompatActivity {
 //                Log.i("mag2851-afterPayment","you did it");
 //
 //            }catch (NullPointerException exception) { }
-//        }
+        }
     }
+
 }

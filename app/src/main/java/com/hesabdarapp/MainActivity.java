@@ -112,5 +112,35 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Log.i("mag2851-afterPayment",intent.getData().toString());
+        if(intent.getAction() != null && intent.getAction().equals(Intent.ACTION_VIEW)) {
+            Uri uri = intent.getData();
+//            webView.loadUrl(uri.toString());
+//            try {
+//                String q = uri.getQueryParameter("q");
+//                String s = uri.getQueryParameter("s");
+//
+//                AlertDialog dialog;
+//                AlertDialog.Builder builder=new AlertDialog.Builder(MyOrderActivity.this);
+//                View v=getLayoutInflater().inflate(R.layout.dialog_payment,null);
+//                TextView tv=v.findViewById(R.id.tvPayment);
+//                tv.setText(q+s);
+//
+//
+//
+//                builder.setView(v);
+//                dialog=builder.create();
+//                dialog.show();
+//
+//                Log.i("mag2851-afterPayment","you did it");
+//
+//            }catch (NullPointerException exception) { }
+        }
+    }
+
+
 
 }
