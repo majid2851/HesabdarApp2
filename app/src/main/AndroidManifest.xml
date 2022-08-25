@@ -37,6 +37,7 @@
                     android:host="m.hesabdarapp.com/account"
                     android:scheme="https"/>
             </intent-filter>
+<!--            -->
         </activity>
     </application>
 

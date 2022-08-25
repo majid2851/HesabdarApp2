@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
@@ -29,10 +30,23 @@ public class MainActivity extends AppCompatActivity {
 
         webView.setWebViewClient(new WebViewClient(){
             @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                Log.i("mag2851-pagefinishUrl",url );
+                if ( url.contains("https://www.zarinpal.com")||url.contains("pep.shaparak.ir")){
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    startActivity(browserIntent);
+                    // webView.setVisibility(View.INVISIBLE);
+                    finish();
+
+                }
+                tv.setText(url);
+            }
+
+            @Override
             public void onPageFinished(WebView view, String url)
             {
                 super.onPageFinished(view, url);
-                Log.i("mag2851-pagefinishUrl",url );
 
 
             }
@@ -51,14 +65,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean shouldOverrideUrlLoading(WebView view, String url)
             {
                 Log.i("mag2851-url",url);
-                if (url.contains(" https://www.zarinpal.com") ||
-                        url.contains("shaparak.ir")){
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                    startActivity(browserIntent);
-                    finish();
 
-                }
-                tv.setText(url);
 
                 return super.shouldOverrideUrlLoading(view, url);
             }
